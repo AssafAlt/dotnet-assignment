@@ -12,12 +12,12 @@
   };
 
   Object.keys(colorsMap).forEach(function (key) {
-    var option = `<option value="${key}">${key}</option>`;
+    const option = `<option value="${key}">${key}</option>`;
     $("#colorName").append(option);
   });
 
   $("#colorName").change(function () {
-    var selectedColor = $(this).val();
+    const selectedColor = $(this).val();
     if (colorsMap[selectedColor]) {
       $("#colorDisplay")
         .css("background-color", colorsMap[selectedColor])
@@ -45,7 +45,7 @@
         });
 
         data.forEach(function (color) {
-          var row = `<tr data-id="${
+          const row = `<tr data-id="${
             color.id
           }" class="draggable" draggable="true">
                         <td>${color.inStock ? "כן" : "לא"}</td>
@@ -67,7 +67,7 @@
           $("#colorTable tbody").append(row);
         });
 
-        var totalResultsRow = `<tr><td colspan="6">סך הכל תוצאות: ${data.length}</td></tr>`;
+        const totalResultsRow = `<tr><td colspan="6">סך הכל תוצאות: ${data.length}</td></tr>`;
         $("#colorTable tfoot").append(totalResultsRow);
         $("#colorTable").show();
       },
@@ -92,7 +92,7 @@
 
   $("#colorForm #submit-btn").click(function (e) {
     e.preventDefault();
-    var colorData = {
+    const colorData = {
       colorName: $("#colorName").val(),
       price: $("#price").val(),
       displayOrder: $("#displayOrder").val(),
@@ -124,10 +124,10 @@
 
   $("#colorForm #update-btn").click(function (e) {
     e.preventDefault();
-    var colorName = $("#colorName").val();
-    var colorId = $("#colorId").val();
+    const colorName = $("#colorName").val();
+    const colorId = $("#colorId").val();
 
-    var colorData = {
+    const colorData = {
       colorName: colorName,
       price: $("#price").val(),
       displayOrder: $("#displayOrder").val(),
@@ -156,8 +156,8 @@
   });
 
   $("#colorTable").on("click", ".edit-btn", function () {
-    var row = $(this).closest("tr");
-    var colorId = row.data("id");
+    const row = $(this).closest("tr");
+    const colorId = row.data("id");
     $("#formError").text("").hide();
     $("#colorId").val(colorId);
     $("#colorName").val(row.find("td:nth-child(2)").text().trim()).change();
@@ -174,8 +174,8 @@
   });
 
   $("#colorTable").on("click", ".delete-btn", function () {
-    var row = $(this).closest("tr");
-    var colorId = row.data("id");
+    const row = $(this).closest("tr");
+    const colorId = row.data("id");
     $.ajax({
       url: `${apiUrl}/delete/${colorId}`,
       type: "DELETE",
@@ -197,8 +197,8 @@
 
   $("#colorTable tbody").sortable({
     update: function (event, ui) {
-      var rows = $(this).children("tr").toArray();
-      var updatedOrder = rows.map((row, index) => {
+      const rows = $(this).children("tr").toArray();
+      const updatedOrder = rows.map((row, index) => {
         $(row)
           .find("td:nth-child(5)")
           .text(index + 1);
