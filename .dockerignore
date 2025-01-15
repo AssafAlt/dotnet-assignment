@@ -1,0 +1,32 @@
+# Ignore build output
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.swp
+
+# Ignore build and IDE-specific files
+.vscode/
+.idea/
+.DS_Store
+*.log
+*.vs/
+*.ncrunchsolution
+.ncrunchproject
+
+# Ignore Docker-related artifacts
+docker-compose.override.yml
+.env
+
+# Ignore sensitive or temporary files
+secrets.json
+*.tmp
+*.bak
+*.old
+
+# Ignore other unnecessary files
+node_modules/
+dist/
+*.coverage
