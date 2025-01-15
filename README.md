@@ -14,7 +14,7 @@ To deploy this project run
   cd ColorsManagement
   docker-compose up --build
 ```
-Thats All!
+
 
 
 
